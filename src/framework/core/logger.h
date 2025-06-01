@@ -26,6 +26,8 @@
 
 #include <fstream>
 
+#include <fmt/format.h>
+
 struct LogMessage
 {
     LogMessage(const Fw::LogLevel level, const std::string_view message, const std::size_t when) : level(level), message(message), when(when) {}
@@ -58,26 +60,43 @@ public:
 
     // fmt-compatible overloads (for C++ only)
     template<typename... Args>
+<<<<<<< HEAD
     inline void debug(fmt::format_string<Args...> fmtStr, Args&&... args) {
+=======
+    void debug(fmt::format_string<Args...> fmtStr, Args&&... args) {
+>>>>>>> origin/dudantas/version-1405
         debug(fmt::format(fmtStr, std::forward<Args>(args)...));
     }
 
     template<typename... Args>
+<<<<<<< HEAD
     inline void info(fmt::format_string<Args...> fmtStr, Args&&... args) {
+=======
+    void info(fmt::format_string<Args...> fmtStr, Args&&... args) {
+>>>>>>> origin/dudantas/version-1405
         info(fmt::format(fmtStr, std::forward<Args>(args)...));
     }
 
     template<typename... Args>
+<<<<<<< HEAD
     inline void warning(fmt::format_string<Args...> fmtStr, Args&&... args) {
+=======
+    void warning(fmt::format_string<Args...> fmtStr, Args&&... args) {
+>>>>>>> origin/dudantas/version-1405
         warning(fmt::format(fmtStr, std::forward<Args>(args)...));
     }
 
     template<typename... Args>
+<<<<<<< HEAD
     inline void error(fmt::format_string<Args...> fmtStr, Args&&... args) {
+=======
+    void error(fmt::format_string<Args...> fmtStr, Args&&... args) {
+>>>>>>> origin/dudantas/version-1405
         error(fmt::format(fmtStr, std::forward<Args>(args)...));
     }
 
     template<typename... Args>
+<<<<<<< HEAD
     inline void fatal(fmt::format_string<Args...> fmtStr, Args&&... args) {
         fatal(fmt::format(fmtStr, std::forward<Args>(args)...));
     }
@@ -127,6 +146,12 @@ public:
         logFunc(Fw::LogError, what, __PRETTY_FUNCTION__);
     }
 
+=======
+    void fatal(fmt::format_string<Args...> fmtStr, Args&&... args) {
+        fatal(fmt::format(fmtStr, std::forward<Args>(args)...));
+    }
+
+>>>>>>> origin/dudantas/version-1405
     void fireOldMessages();
     void setLogFile(std::string_view file);
     void setOnLog(const OnLogCallback& onLog) { m_onLog = onLog; }

@@ -607,7 +607,7 @@ elseif(WASM)
 		ZLIB::ZLIB
 		OpenSSL::SSL
 		OpenSSL::Crypto
-		httplib::httplib
+		httplib::httplib 
 		fmt::fmt
 	)
 
