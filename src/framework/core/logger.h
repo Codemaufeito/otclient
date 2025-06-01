@@ -60,98 +60,35 @@ public:
 
     // fmt-compatible overloads (for C++ only)
     template<typename... Args>
-<<<<<<< HEAD
-    inline void debug(fmt::format_string<Args...> fmtStr, Args&&... args) {
-=======
     void debug(fmt::format_string<Args...> fmtStr, Args&&... args) {
->>>>>>> origin/dudantas/version-1405
         debug(fmt::format(fmtStr, std::forward<Args>(args)...));
     }
 
     template<typename... Args>
-<<<<<<< HEAD
-    inline void info(fmt::format_string<Args...> fmtStr, Args&&... args) {
-=======
     void info(fmt::format_string<Args...> fmtStr, Args&&... args) {
->>>>>>> origin/dudantas/version-1405
         info(fmt::format(fmtStr, std::forward<Args>(args)...));
     }
 
     template<typename... Args>
-<<<<<<< HEAD
-    inline void warning(fmt::format_string<Args...> fmtStr, Args&&... args) {
-=======
     void warning(fmt::format_string<Args...> fmtStr, Args&&... args) {
->>>>>>> origin/dudantas/version-1405
         warning(fmt::format(fmtStr, std::forward<Args>(args)...));
     }
 
     template<typename... Args>
-<<<<<<< HEAD
-    inline void error(fmt::format_string<Args...> fmtStr, Args&&... args) {
-=======
     void error(fmt::format_string<Args...> fmtStr, Args&&... args) {
->>>>>>> origin/dudantas/version-1405
         error(fmt::format(fmtStr, std::forward<Args>(args)...));
     }
 
     template<typename... Args>
-<<<<<<< HEAD
-    inline void fatal(fmt::format_string<Args...> fmtStr, Args&&... args) {
-        fatal(fmt::format(fmtStr, std::forward<Args>(args)...));
-    }
-
-    template<typename... Args>
-    inline void fine(fmt::format_string<Args...> fmtStr, Args&&... args) {
-        fine(fmt::format(fmtStr, std::forward<Args>(args)...));
-    }
-
-    inline void trace() {
-        logFunc(Fw::LogDebug, "", __PRETTY_FUNCTION__);
-    }
-
-    template<typename... Args>
-    inline void traceDebug(fmt::format_string<Args...> fmtStr, Args&&... args) {
-        logFunc(Fw::LogDebug, fmt::format(fmtStr, std::forward<Args>(args)...), __PRETTY_FUNCTION__);
-    }
-
-    inline void traceDebug(std::string_view what) {
-        logFunc(Fw::LogDebug, what, __PRETTY_FUNCTION__);
-    }
-
-    template<typename... Args>
-    inline void traceInfo(fmt::format_string<Args...> fmtStr, Args&&... args) {
-        logFunc(Fw::LogInfo, fmt::format(fmtStr, std::forward<Args>(args)...), __PRETTY_FUNCTION__);
-    }
-
-    inline void traceInfo(std::string_view what) {
-        logFunc(Fw::LogInfo, what, __PRETTY_FUNCTION__);
-    }
-
-    template<typename... Args>
-    inline void traceWarning(fmt::format_string<Args...> fmtStr, Args&&... args) {
-        logFunc(Fw::LogWarning, fmt::format(fmtStr, std::forward<Args>(args)...), __PRETTY_FUNCTION__);
-    }
-
-    inline void traceWarning(std::string_view what) {
-        logFunc(Fw::LogWarning, what, __PRETTY_FUNCTION__);
-    }
-
-    template<typename... Args>
-    inline void traceError(fmt::format_string<Args...> fmtStr, Args&&... args) {
-        logFunc(Fw::LogError, fmt::format(fmtStr, std::forward<Args>(args)...), __PRETTY_FUNCTION__);
-    }
-
-    inline void traceError(std::string_view what) {
-        logFunc(Fw::LogError, what, __PRETTY_FUNCTION__);
-    }
-
-=======
     void fatal(fmt::format_string<Args...> fmtStr, Args&&... args) {
         fatal(fmt::format(fmtStr, std::forward<Args>(args)...));
     }
 
->>>>>>> origin/dudantas/version-1405
+    template<typename... Args>
+    void fine(fmt::format_string<Args...> fmtStr, Args&&... args) {
+        fine(fmt::format(fmtStr, std::forward<Args>(args)...));
+    }
+
     void fireOldMessages();
     void setLogFile(std::string_view file);
     void setOnLog(const OnLogCallback& onLog) { m_onLog = onLog; }
@@ -166,6 +103,12 @@ private:
 };
 
 extern Logger g_logger;
+
+#define trace() logFunc(Fw::LogDebug, "", __PRETTY_FUNCTION__)
+#define traceDebug(a) logFunc(Fw::LogDebug, a, __PRETTY_FUNCTION__)
+#define traceInfo(a) logFunc(Fw::LogInfo, a, __PRETTY_FUNCTION__)
+#define traceWarning(a) logFunc(Fw::LogWarning, a, __PRETTY_FUNCTION__)
+#define traceError(a) logFunc(Fw::LogError, a, __PRETTY_FUNCTION__)
 
 #define logTraceCounter() { \
     static int __count = 0; \
